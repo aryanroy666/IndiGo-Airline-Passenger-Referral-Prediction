@@ -9,11 +9,11 @@ A supervised machine learning project that predicts whether an airline passenger
 
 ---
 
-## 📌 Project Overview
+## Project Overview
 
-Customer referrals are one of the strongest, lowest-cost growth channels an airline has — a passenger who recommends an airline effectively becomes an unpaid brand ambassador. This project builds a **binary classification model** that predicts whether a passenger will recommend an airline (`Yes` / `No`) using their ratings across the flight experience: seat comfort, cabin service, food & beverages, in-flight entertainment, ground service, value for money, and cabin class.
+Customer referrals are one of the strongest, lowest-cost growth channels an airline has. A passenger who recommends an airline effectively becomes an unpaid brand ambassador. This project builds a **binary classification model** that predicts whether a passenger will recommend an airline (`Yes` / `No`) using their ratings across the flight experience: seat comfort, cabin service, food & beverages, in-flight entertainment, ground service, value for money, and cabin class.
 
-The end goal is to give airlines an early, data-driven signal on **which passengers are likely to become promoters or detractors**, so they can act on it — targeted loyalty offers, proactive service recovery, or codeshare/partnership decisions.
+The end goal is to give airlines an early, data-driven signal on **which passengers are likely to become promoters or detractors**, so they can act on it - targeted loyalty offers, proactive service recovery, or codeshare/partnership decisions.
 
 ## 🧠 Problem Statement
 
