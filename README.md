@@ -15,7 +15,7 @@ Customer referrals are one of the strongest, lowest-cost growth channels an airl
 
 The end goal is to give airlines an early, data-driven signal on **which passengers are likely to become promoters or detractors**, so they can act on it - targeted loyalty offers, proactive service recovery, or codeshare/partnership decisions.
 
-## 🧠 Problem Statement
+## Problem Statement
 
 Given historical passenger reviews and service ratings, classify whether a passenger would recommend the airline to others. Specifically, the project aims to:
 
@@ -23,35 +23,35 @@ Given historical passenger reviews and service ratings, classify whether a passe
 - Identify which service dimensions (seat comfort, food, entertainment, ground service, value for money, etc.) most influence a recommendation.
 - Translate model output into actionable insight airlines can use for retention, service improvement, and marketing.
 
-## 🗂️ Dataset
+## Dataset
 
-- **Source**: Airline passenger reviews scraped from [airlinequality.com](https://www.airlinequality.com), covering reviews from 2006–2019. This is the same family of publicly available "Airline Reviews" datasets found on Kaggle (e.g. search *"Airline Reviews airlinequality"*) — the raw file is not included in this repo due to size.
+- **Source**: Airline passenger reviews scraped from [airlinequality.com](https://www.airlinequality.com), covering reviews from 2006–2019. This is the same family of publicly available "Airline Reviews" datasets found on Kaggle (e.g. search *"Airline Reviews airlinequality"*) - the raw file is not included in this repo due to size.
 - **Raw size**: 131,895 rows × 17 columns.
 - **After cleaning** (deduping, dropping high-null columns, imputing, dropping remaining nulls, removing the leaky `overall_rating` field): 23,606 rows × 13 columns.
 - **Key columns used**: `cabin` (class), `seat_comfort`, `cabin_service`, `food_bev`, `entertainment`, `ground_service`, `value_for_money`, `traveller_type`, `recommended` (target).
 
 > To reproduce results, download an equivalent airline-reviews CSV and place it under `data/` (see [How to Run](#-how-to-run)).
 
-## 🔬 Approach
+## Approach
 
-1. **Data cleaning** — removed duplicates, dropped columns with excessive missing values (`aircraft`, `author`, `customer_review`, `route`), imputed `food_bev` with the column mean, dropped remaining nulls, fixed data types and dates.
-2. **Exploratory Data Analysis (EDA)** — 13 charts covering univariate, bivariate, and multivariate relationships (top airlines by review volume, cabin class distribution, rating distributions, correlation heatmap, pair plots, etc.) to understand what drives recommendations.
-3. **Hypothesis testing** — three hypotheses tested with two-sample t-tests, chi-square tests, and ANOVA to statistically validate relationships (e.g. rating differences across airlines, association between traveller type and recommendation, seat comfort differences across cabins).
+1. **Data cleaning** - removed duplicates, dropped columns with excessive missing values (`aircraft`, `author`, `customer_review`, `route`), imputed `food_bev` with the column mean, dropped remaining nulls, fixed data types and dates.
+2. **Exploratory Data Analysis (EDA)** - 13 charts covering univariate, bivariate, and multivariate relationships (top airlines by review volume, cabin class distribution, rating distributions, correlation heatmap, pair plots, etc.) to understand what drives recommendations.
+3. **Hypothesis testing** - three hypotheses tested with two-sample t-tests, chi-square tests, and ANOVA to statistically validate relationships (e.g. rating differences across airlines, association between traveller type and recommendation, seat comfort differences across cabins).
 4. **Feature engineering**
    - One-hot / ordinal encoding for categorical features (`cabin`, `traveller_type`).
    - Label encoding for the target (`recommended`).
    - Dropped `overall_rating` to prevent data leakage (it near-perfectly determines the target).
    - **PCA** used to reduce 11 numeric features down to **6 principal components**, retaining ~90% of variance.
-5. **Train/test split** — 70/30 hold-out split (`X_train`: 16,524 rows, `X_test`: 7,082 rows).
+5. **Train/test split** - 70/30 hold-out split (`X_train`: 16,524 rows, `X_test`: 7,082 rows).
 6. **Modeling** — four classifiers trained, evaluated, and hyperparameter-tuned:
    - Decision Tree (`GridSearchCV`)
    - K-Nearest Neighbors (`GridSearchCV`)
    - Support Vector Machine (`RandomizedSearchCV`)
    - Random Forest (`RandomizedSearchCV`)
-7. **Model explainability** — Random Forest feature importances used to interpret which service attributes matter most, independent of the final chosen model.
-8. **Deployment prep** — final model serialized with both `pickle` and `joblib`, then reloaded to sanity-check predictions on unseen inputs.
+7. **Model explainability** - Random Forest feature importances used to interpret which service attributes matter most, independent of the final chosen model.
+8. **Deployment prep** - final model serialized with both `pickle` and `joblib`, then reloaded to sanity-check predictions on unseen inputs.
 
-## 📊 Model Results
+## Model Results
 
 F1-score was chosen as the primary evaluation metric (harmonic mean of precision & recall) since false positives and false negatives carry comparable business cost here.
 
@@ -64,28 +64,28 @@ F1-score was chosen as the primary evaluation metric (harmonic mean of precision
 
 **Final model: Support Vector Machine (SVM).** It was chosen over the alternatives because it showed the smallest train–test gap (least overfitting) both before and after tuning, generalizing best to unseen passengers.
 
-## 💡 Key Business Insights
+## Key Business Insights
 
-- Passengers who give an **overall rating above 8 are almost certain (~99%) to recommend** the airline — a simple, actionable early signal.
+- Passengers who give an **overall rating above 8 are almost certain (~99%) to recommend** the airline - a simple, actionable early signal.
 - **Economy class dominates travel volume** (72.5%), followed by Business (19.4%); service investments aimed at Economy passengers affect the largest share of customers.
 - **Service rating above 3** (on the per-category scale) is the tipping point after which a passenger becomes likely to recommend the airline, across every cabin class.
-- Review volume spikes in **January, July, and August** — likely holiday travel peaks — suggesting airlines should staff up service teams during these months to protect satisfaction scores.
+- Review volume spikes in **January, July, and August** - likely holiday travel peaks and suggesting airlines should staff up service teams during these months to protect satisfaction scores.
 - Seat comfort, cabin service, ground service, and value for money were the most influential features in predicting recommendation, per Random Forest feature importance.
 
-## 🗃️ Repository Structure
+## Repository Structure
 
 ```
 IndiGo-Airline-Passenger-Referral-Prediction/
 ├── notebooks/
-│   └── IndiGo_Airline_Passenger_Referral_Prediction.ipynb   # Full analysis: EDA → modeling → evaluation
+│   └── IndiGo_Airline_Passenger_Referral_Prediction.ipynb   # Complete analysis: EDA → Modeling → Evaluation
 ├── models/
 │   └── README.md               # Notes on regenerating serialized model artifacts
-├── requirements.txt             # Python dependencies
+├── requirements.txt            # Python dependencies
 ├── LICENSE
 └── README.md
 ```
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Language**: Python 3.9+
 - **Data handling**: pandas, NumPy
@@ -94,7 +94,7 @@ IndiGo-Airline-Passenger-Referral-Prediction/
 - **ML / preprocessing**: scikit-learn, category_encoders
 - **Model persistence**: pickle, joblib
 
-## ▶️ How to Run
+## How to Run
 
 ```bash
 # 1. Clone the repo
@@ -114,7 +114,7 @@ pip install -r requirements.txt
 jupyter notebook notebooks/IndiGo_Airline_Passenger_Referral_Prediction.ipynb
 ```
 
-## 🚀 Future Work
+## Future Work
 
 - Package the final SVM pipeline (encoding → PCA → model) behind a REST API (FastAPI/Flask) for real-time scoring.
 - Retrain on more recent review data to keep the model current with evolving passenger expectations.
