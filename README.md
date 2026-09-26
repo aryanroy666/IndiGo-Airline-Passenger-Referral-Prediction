@@ -15,6 +15,21 @@ Customer referrals are one of the strongest, lowest-cost growth channels an airl
 
 The end goal is to give airlines an early, data-driven signal on **which passengers are likely to become promoters or detractors**, so they can act on it - targeted loyalty offers, proactive service recovery, or codeshare/partnership decisions.
 
+## Visual Highlights
+
+<table>
+<tr>
+<td width="50%"><img src="assets/top10_airlines_by_reviews.png" alt="Top 10 airlines by review count"/></td>
+<td width="50%"><img src="assets/cabin_class_distribution.png" alt="Cabin class distribution"/></td>
+</tr>
+<tr>
+<td width="50%"><img src="assets/correlation_heatmap.png" alt="Correlation heatmap"/></td>
+<td width="50%"><img src="assets/random_forest_feature_importance.png" alt="Random Forest feature importance"/></td>
+</tr>
+</table>
+
+More charts (missing-value analysis, rating distributions, PCA variance, confusion matrices) are in [`assets/`](assets/) and in the full notebook.
+
 ## Problem Statement
 
 Given historical passenger reviews and service ratings, classify whether a passenger would recommend the airline to others. Specifically, the project aims to:
