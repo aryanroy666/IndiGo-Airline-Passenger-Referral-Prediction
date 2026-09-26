@@ -96,6 +96,7 @@ IndiGo-Airline-Passenger-Referral-Prediction/
 ├── models/
 │   └── README.md               # Notes on regenerating serialized model artifacts
 ├── requirements.txt            # Python dependencies
+├── .gitignore
 ├── LICENSE
 └── README.md
 ```
