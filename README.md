@@ -1,4 +1,4 @@
-# ✈️ IndiGo Airline Passenger Referral Prediction
+# IndiGo Airline Passenger Referral Prediction
 
 A supervised machine learning project that predicts whether an airline passenger will **recommend (refer) an airline** to friends and family, based on their trip experience and service ratings.
 
