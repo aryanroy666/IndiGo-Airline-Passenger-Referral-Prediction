@@ -140,7 +140,7 @@ jupyter notebook notebooks/IndiGo_Airline_Passenger_Referral_Prediction.ipynb
 ## 👤 Author
 
 **Aryan Roy**
-Data Analyst | MCS in AI/ML, IIT Guwahati
+| Data Analyst | MCS in AI/ML, IIT Guwahati
 
 ## 📄 License
 
