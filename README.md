@@ -58,7 +58,7 @@ Given historical passenger reviews and service ratings, classify whether a passe
    - Dropped `overall_rating` to prevent data leakage (it near-perfectly determines the target).
    - **PCA** used to reduce 11 numeric features down to **6 principal components**, retaining ~90% of variance.
 5. **Train/test split** - 70/30 hold-out split (`X_train`: 16,524 rows, `X_test`: 7,082 rows).
-6. **Modeling** — four classifiers trained, evaluated, and hyperparameter-tuned:
+6. **Modeling** - four classifiers trained, evaluated, and hyperparameter-tuned:
    - Decision Tree (`GridSearchCV`)
    - K-Nearest Neighbors (`GridSearchCV`)
    - Support Vector Machine (`RandomizedSearchCV`)
