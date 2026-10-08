@@ -52,7 +52,7 @@ Given historical passenger reviews and service ratings, classify whether a passe
 1. **Data Cleaning** - removed duplicates, dropped columns with excessive missing values (`aircraft`, `author`, `customer_review`, `route`), imputed `food_bev` with the column mean, dropped remaining nulls, fixed data types and dates.
 2. **Exploratory Data Analysis (EDA)** - 13 charts covering univariate, bivariate, and multivariate relationships (top airlines by review volume, cabin class distribution, rating distributions, correlation heatmap, pair plots, etc.) to understand what drives recommendations.
 3. **Hypothesis Testing** - three hypotheses tested with two-sample t-tests, chi-square tests, and ANOVA to statistically validate relationships (e.g. rating differences across airlines, association between traveller type and recommendation, seat comfort differences across cabins).
-4. **Feature Engineering -**
+4. **Feature Engineering:**
    - One-hot / ordinal encoding for categorical features (`cabin`, `traveller_type`).
    - Label encoding for the target (`recommended`).
    - Dropped `overall_rating` to prevent data leakage (it near-perfectly determines the target).
